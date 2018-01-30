@@ -2,9 +2,8 @@
 
 namespace App;
 
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Symfony\Component\Debug\Debug;
+use Symfony\Component\HttpFoundation\Request;
 
 class Container
 {
@@ -13,21 +12,35 @@ class Container
      */
     private static $container;
 
-    private static function init()
+    public static function setupKernel()
     {
-        if (self::$container !== null) {
-            return;
+        $env = $_SERVER['APP_ENV'] ?? 'dev';
+        $debug = $_SERVER['APP_DEBUG'] ?? ('prod' !== $env);
+
+        if ($debug) {
+            umask(0000);
+
+            Debug::enable();
         }
 
-        $container = new ContainerBuilder();
-        $loader = new YamlFileLoader($container, new FileLocator([__DIR__ . '/../config/']));
-        $loader->load('my-services.yaml');
-        self::$container = $container;
+        if ($trustedProxies = $_SERVER['TRUSTED_PROXIES'] ?? false) {
+            Request::setTrustedProxies(explode(',', $trustedProxies), Request::HEADER_X_FORWARDED_ALL ^ Request::HEADER_X_FORWARDED_HOST);
+        }
+
+        if ($trustedHosts = $_SERVER['TRUSTED_HOSTS'] ?? false) {
+            Request::setTrustedHosts(explode(',', $trustedHosts));
+        }
+
+        $kernel = new Kernel($env, $debug);
+        $kernel->boot();
+
+        self::$container = $kernel->getContainer();
+
+        return $kernel;
     }
 
     public static function get($serviceId)
     {
-        self::init();
         return self::$container->get($serviceId);
     }
 }

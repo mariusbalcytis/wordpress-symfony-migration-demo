@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
+use App\WeatherProvider;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class MyController
 {
-    public function showTime()
+    public function showTime(WeatherProvider $weatherProvider)
     {
-        return new JsonResponse(['time' => time()]);
+        return new JsonResponse(['time' => time(), 'weather' => $weatherProvider->getCurrentWeather()]);
     }
 }

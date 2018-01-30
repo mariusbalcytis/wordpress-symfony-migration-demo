@@ -13,8 +13,10 @@ Author URI: http://ma.tt/
 */
 
 function hello_dolly_get_lyric() {
-    $weatherProvider = \App\Container::get('weather_provider');
-    return $weatherProvider->getCurrentWeather();
+    $symfonyUrl = \App\Container::get('router')->generate('index');
+
+    $weatherProvider = \App\Container::get(\App\WeatherProvider::class);
+    return $weatherProvider->getCurrentWeather() . '. URL: ' . $symfonyUrl;
 }
 
 // This just echoes the chosen line, we'll position it later

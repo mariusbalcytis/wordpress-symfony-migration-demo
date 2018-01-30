@@ -1,6 +1,8 @@
 services:
-    weather_provider:
-        class: App\WeatherProvider
+    _defaults:
+        public: true
+
+    App\WeatherProvider:
         arguments:
             - "@weather_api"
 
