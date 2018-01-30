@@ -13,7 +13,7 @@ Author URI: http://ma.tt/
 */
 
 function hello_dolly_get_lyric() {
-    $weatherProvider = new \Maba\Application\WeatherProvider();
+    $weatherProvider = \Maba\Application\Container::get('weather_provider');
     return $weatherProvider->getCurrentWeather();
 }
 

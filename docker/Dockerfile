@@ -1,6 +1,6 @@
 # based on https://github.com/docker-library/wordpress/blob/549e1bd44995ba414000530749e05d8078dc9467/php7.0/apache/Dockerfile
 
-FROM php:7.0-apache
+FROM php:7.1-apache
 
 # install the PHP extensions we need
 RUN set -ex; \

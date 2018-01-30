@@ -2,12 +2,20 @@
 
 namespace Maba\Application;
 
+use Th3Mouk\YahooWeatherAPI\YahooWeatherAPIInterface;
+
 class WeatherProvider
 {
+    private $weatherAPI;
+
+    public function __construct(YahooWeatherAPIInterface $weatherAPI)
+    {
+        $this->weatherAPI = $weatherAPI;
+    }
+
     public function getCurrentWeather()
     {
-        $yahooWeather = new \Th3Mouk\YahooWeatherAPI\YahooWeatherAPI();
-        $condition = $yahooWeather->callApiCityName('Vilnius')['item']['condition'];
+        $condition = $this->weatherAPI->callApiCityName('Vilnius')['item']['condition'];
         return $condition['text'] . ' (' . $condition['temp'] . ' C)';
     }
 }

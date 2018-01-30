@@ -1,0 +1,8 @@
+services:
+    weather_provider:
+        class: Maba\Application\WeatherProvider
+        arguments:
+            - "@weather_api"
+
+    weather_api:
+        class: Th3Mouk\YahooWeatherAPI\YahooWeatherAPI
