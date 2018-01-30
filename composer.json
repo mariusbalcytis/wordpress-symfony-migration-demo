@@ -1,0 +1,18 @@
+{
+    "name": "maba/wordpress-symfony-migration-demo",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Marius Balčytis",
+            "email": "marius.balcytis@gmail.com"
+        }
+    ],
+    "require": {
+        "th3mouk/yahoo-weather-api": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Maba\\Application\\": "src/"
+        }
+    }
+}
