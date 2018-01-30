@@ -1,6 +1,6 @@
 <?php
 
-namespace Maba\Application;
+namespace App;
 
 use Th3Mouk\YahooWeatherAPI\YahooWeatherAPIInterface;
 

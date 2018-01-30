@@ -1,8 +1,8 @@
 <?php
 
-namespace Maba\Application\Tests;
+namespace App\Tests;
 
-use Maba\Application\WeatherProvider;
+use App\WeatherProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Th3Mouk\YahooWeatherAPI\YahooWeatherAPIInterface;

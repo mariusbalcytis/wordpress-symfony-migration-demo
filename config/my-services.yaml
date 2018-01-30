@@ -1,6 +1,6 @@
 services:
     weather_provider:
-        class: Maba\Application\WeatherProvider
+        class: App\WeatherProvider
         arguments:
             - "@weather_api"
 

@@ -18,12 +18,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Maba\\Application\\": "src/"
+            "App\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Maba\\Application\\Tests\\": "tests/"
+            "App\\Tests\\": "tests/"
         }
     },
     "platform": {

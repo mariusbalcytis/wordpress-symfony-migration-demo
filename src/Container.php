@@ -1,6 +1,6 @@
 <?php
 
-namespace Maba\Application;
+namespace App;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -21,7 +21,7 @@ class Container
 
         $container = new ContainerBuilder();
         $loader = new YamlFileLoader($container, new FileLocator([__DIR__ . '/../config/']));
-        $loader->load('services.yml');
+        $loader->load('my-services.yaml');
         self::$container = $container;
     }
 
