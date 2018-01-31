@@ -8,12 +8,16 @@ use Symfony\Component\HttpFoundation\Request;
 class Container
 {
     /**
-     * @var \Symfony\Component\DependencyInjection\Container
+     * @var Kernel
      */
-    private static $container;
+    private static $kernel;
 
     public static function setupKernel()
     {
+        if (self::$kernel !== null) {
+            return self::$kernel;
+        }
+
         $env = $_SERVER['APP_ENV'] ?? 'dev';
         $debug = $_SERVER['APP_DEBUG'] ?? ('prod' !== $env);
 
@@ -34,13 +38,13 @@ class Container
         $kernel = new Kernel($env, $debug);
         $kernel->boot();
 
-        self::$container = $kernel->getContainer();
+        self::$kernel = $kernel;
 
         return $kernel;
     }
 
     public static function get($serviceId)
     {
-        return self::$container->get($serviceId);
+        return self::$kernel->getContainer()->get($serviceId);
     }
 }

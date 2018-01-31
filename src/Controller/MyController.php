@@ -9,6 +9,10 @@ class MyController
 {
     public function showTime(WeatherProvider $weatherProvider)
     {
-        return new JsonResponse(['time' => time(), 'weather' => $weatherProvider->getCurrentWeather()]);
+        return new JsonResponse([
+            'time' => time(),
+            'weather' => $weatherProvider->getCurrentWeather(),
+            'home_template' => get_home_template(),
+        ]);
     }
 }
