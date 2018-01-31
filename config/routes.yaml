@@ -2,3 +2,7 @@ index:
     path: /time
     controller: App\Controller\MyController::showTime
 
+wordpress:
+    path: /
+    controller: App\Controller\WordPressController::index
+
