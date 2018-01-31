@@ -2,16 +2,14 @@
 
 namespace App\Controller;
 
-use App\WeatherProvider;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class MyController
 {
-    public function showTime(WeatherProvider $weatherProvider)
+    public function information()
     {
         return new JsonResponse([
-            'time' => time(),
-            'weather' => $weatherProvider->getCurrentWeather(),
+            'weather' => hello_dolly_get_lyric(),
             'home_template' => get_home_template(),
         ]);
     }

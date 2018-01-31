@@ -1,6 +1,6 @@
 index:
-    path: /time
-    controller: App\Controller\MyController::showTime
+    path: /information
+    controller: App\Controller\MyController::information
 
 wordpress:
     path: /
