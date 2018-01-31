@@ -8,7 +8,7 @@ require __DIR__.'/wp-load.php';
 
 
 call_user_func(function() {
-    $kernel = \App\Container::setupKernel();
+    $kernel = \App\Integration\Container::setupKernel();
     $request = Request::createFromGlobals();
     $response = $kernel->handle($request);
     $response->send();

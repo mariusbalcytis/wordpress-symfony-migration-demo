@@ -15,3 +15,4 @@ services:
 
 imports:
     - { resource: ./my-services.yaml }
+    - { resource: ./integration-services.yaml }

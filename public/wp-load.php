@@ -18,7 +18,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-\App\Container::setupKernel();
+\App\Integration\Container::setupKernel();
 
 /** Define ABSPATH as this file's directory */
 if ( ! defined( 'ABSPATH' ) ) {

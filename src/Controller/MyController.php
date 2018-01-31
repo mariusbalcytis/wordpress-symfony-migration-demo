@@ -2,15 +2,15 @@
 
 namespace App\Controller;
 
+use App\DollyLyricsProviderInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class MyController
 {
-    public function information()
+    public function information(DollyLyricsProviderInterface $dollyLyricsProvider)
     {
         return new JsonResponse([
-            'weather' => hello_dolly_get_lyric(),
-            'home_template' => get_home_template(),
+            'lyrics' => $dollyLyricsProvider->getLyrics(),
         ]);
     }
 }

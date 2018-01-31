@@ -13,9 +13,9 @@ Author URI: http://ma.tt/
 */
 
 function hello_dolly_get_lyric() {
-    $symfonyUrl = \App\Container::get('router')->generate('index');
+    $symfonyUrl = \App\Integration\Container::get('router')->generate('index');
 
-    $weatherProvider = \App\Container::get(\App\WeatherProvider::class);
+    $weatherProvider = \App\Integration\Container::get(\App\WeatherProvider::class);
     return $weatherProvider->getCurrentWeather() . '. URL: ' . $symfonyUrl;
 }
 

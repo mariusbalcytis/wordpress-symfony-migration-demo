@@ -4,5 +4,5 @@ index:
 
 wordpress:
     path: /
-    controller: App\Controller\WordPressController::index
+    controller: App\Integration\Controller\WordPressController::index
 
